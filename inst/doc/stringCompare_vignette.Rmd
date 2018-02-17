@@ -1,0 +1,110 @@
+---
+title: "Package 'stringCompare'"
+author: "Prathwish Shetty"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Package 'stringCompare'}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+
+## String comparison techniques implemented in the package
+
+1. *Extended Jaccaard*
+2. *Monge Elkan*
+
+
+### 1. Extended Jaccard comparison
+
+####Description
+
+This algorithm extracts tokens (words sererated by whitespace) from the two input strings and then find the best matching pair of tokens in the set of tokens using a secondary similarity function.
+
+####Usage
+
+extendedJaccard(*string1*,*string2*,*method=c("osa","lv","dl","lcs","jw")*,*threshold=seq(1,0)*)
+
+####Arguements
+
+* **string1** - *character string to be matched*
+* **string2** - *character string to be matched against*
+* **method**  - *Method to be used for secondary comparison*
+* **threshold**- *Numeric vector of probabilities with values in [0,1]*
+
+####Details
+
+This is an extension of the Jaccard algorithm, best suited for strings with multiple words. It uses a secondary string comparison method to calculate similarity between all the words in the two strings to be compared.Next a set of tokens shared between the two strings are calculated provided the similarity is above a certain threshold. Finally, to get the similarity score a ratio of shared tokens by sum of shared tokens and unique 
+tokens of the two strings.
+
+####Value
+
+Returns a vector with similarities, which are values between 0 and 1 where 1 corresponds to perfect similarity (distance 0) and 0 to complete dissimilarity.
+
+####Methods that can be used as secondary similarity function
+
+* **lv** - *Levenshtein similarity*
+* **osa** - *Optimal string aligment similarity*
+* **dl**  - *Full Damerau-Levenshtein similarity*
+* **lcs**  - *Longest common substring similarity*
+* **jw**  - *Jaro Winkler similarity*
+
+####Example
+
+```{r}
+#calculate the similarity between two strings "kaspersky antivirus" and "kasper antivirus"
+stringCompare::extendedJaccard("Caspersky is awesome","Casper are antivirus","jw",0.85)
+```
+
+
+
+### 2. Monge - Elkan String comparison
+
+####Description
+
+This algorithm extracts tokens (words sererated by whitespace) from the two input strings and then find the best matching pair of tokens in the set of tokens using a secondary similarity function.
+
+####Usage
+
+mongeElkan(*string1*,*string2*,*method=c("osa","lv","dl","lcs","jw")*)
+
+####Arguements
+
+* **string1** - *character string to be matched*
+* **string2** - *character string to be matched against*
+* **method**  - *Method to be used for secondary comparison*
+
+####Details
+
+This method separates a string into tokens based on white spaces. And then each token from one string is compared  against  every  other  token  in  another  string  using  a  secondary  comparison  method.  Next  the average of the best match per token is taken to compute the Monge-Elkan Similarity score.
+
+####Value
+
+Returns a vector with similarities, which are values between 0 and 1 where 1 corresponds to perfect similarity (distance 0) and 0 to complete dissimilarity.
+
+####Methods that can be used as secondary similarity function
+
+* **lv** - *Levenshtein similarity*
+* **osa** - *Optimal string aligment similarity*
+* **dl**  - *Full Damerau-Levenshtein similarity*
+* **lcs**  - *Longest common substring similarity*
+* **jw**  - *Jaro Winkler similarity*
+
+####Example
+
+
+```{r}
+#calculate the similarity between two strings "kaspersky antivirus" and "kasper antivirus"
+
+stringCompare::mongeElkan("Caspersky antivirus","Casper antivirus","jw")
+```
+

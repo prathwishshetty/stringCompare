@@ -1,0 +1,17 @@
+Package: stringCompare
+Type: Package
+Title: String comparision functions
+Version: 0.1.0
+Author: Prathwish Shetty <shetty.prat@husky.neu.edu>
+Maintainer: Prathwish Shetty <shetty.prat@husky.neu.edu>
+Description: git i.
+License: Artistic-2.0
+Depends: R (>= 3.4.2)
+Imports: stringdist, stringr, dplyr
+Suggests: roxygen2, testthat, knitr,rmarkdown
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
+VignetteBuilder: knitr
+NeedsCompilation: no
+Packaged: 2017-12-11 01:48:28 UTC; Prathwish
