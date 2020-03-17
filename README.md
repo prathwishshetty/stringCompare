@@ -27,7 +27,7 @@ This algorithm extracts tokens (words sererated by whitespace) from the two inpu
 
 #### Usage
 
-extendedJaccard(_string1_,_string2_,_method=c(“osa”,“lv”,“dl”,“lcs”,“jw”)_,_threshold=seq(1,0)_)
+`extendedJaccard(_string1_,_string2_,_method=c(“osa”,“lv”,“dl”,“lcs”,“jw”)_,_threshold=seq(1,0)_)`
 
 </div>
 
@@ -102,7 +102,7 @@ This algorithm extracts tokens (words sererated by whitespace) from the two inpu
 
 #### Usage
 
-mongeElkan(_string1_,_string2_,_method=c(“osa”,“lv”,“dl”,“lcs”,“jw”)_)
+`mongeElkan(_string1_,_string2_,_method=c(“osa”,“lv”,“dl”,“lcs”,“jw”)_)`
 
 </div>
 
